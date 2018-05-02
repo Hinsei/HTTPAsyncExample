@@ -1,1 +1,69 @@
-this is my home
+<div>
+  <h1>Chuck Norris</h1>
+  <div id="joke" style="border: 1px solid gray; padding: 3em; width: 40%"></div>
+  <br>
+  <button id="fetch">Fetch</button>
+  <button id="jquery">jQuery</button>
+  <button id="vanilla">Vanilla</button>
+  <button id="unirest">Unirest</button>
+</div>
+
+<!---->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+var chuckNorrisApiURL = "https://api.chucknorris.io/jokes/random"
+var jokeDiv = document.getElementById('joke');
+
+  // VANILLA JAVASCRIPT
+  document.getElementById('vanilla').onclick = function(){
+    var req = new XMLHttpRequest();
+    req.open('GET', chuckNorrisApiURL);
+    req.responseType = 'json';
+    req.send();
+    req.onload = function(e){
+      jokeDiv.innerHTML = e.target.response.value.toUpperCase();
+    };
+    req.onerror = function(e){
+      console.log('Error: ' + req.status)
+    };
+  };
+
+  // JQUERY
+  $("#jquery").click(function(e){
+    e.preventDefault();
+    $.ajax({
+      url: chuckNorrisApiURL,
+      method: "get",
+      success: function(data){
+        jokeDiv.innerHTML = data.value.toUpperCase();
+      },
+      error: function(error){
+        console.log('Error: ' + error)
+      }
+    })
+  });
+  
+  
+  // FETCH
+  document.getElementById('fetch').onclick = function(){
+    fetch(chuckNorrisApiURL).then(
+      function(response){
+        if (response.status != 200) {
+          console.log('Error: ' + response.statusText);
+          return;
+        } 
+        response.json().then(function(data){
+          jokeDiv.innerHTML = data.value.toUpperCase();
+        });
+      }).catch(function(err){
+        console.log(err)
+      })
+  };
+  
+  
+  
+
+</script>
