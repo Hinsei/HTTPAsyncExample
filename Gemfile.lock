@@ -7,7 +7,7 @@ GEM
     mime-types (1.25.1)
     multi_json (1.13.1)
     mustermann (1.0.2)
-    rack (2.0.4)
+    rack (2.0.5)
     rack-protection (2.0.1)
       rack
     rest-client (1.6.9)
@@ -39,4 +39,4 @@ DEPENDENCIES
   unirest
 
 BUNDLED WITH
-   1.15.4
+   1.16.1

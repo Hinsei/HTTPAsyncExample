@@ -1,11 +1,12 @@
 <div>
   <h1>Chuck Norris</h1>
-  <div id="joke" style="border: 1px solid gray; padding: 3em; width: 40%"></div>
+  <div id="joke" style="border: 1px solid gray; padding: 3em; width: 40%">
+    <%= @joke %>
+  </div>
   <br>
   <button id="fetch">Fetch</button>
   <button id="jquery">jQuery</button>
   <button id="vanilla">Vanilla</button>
-  <button id="unirest">Unirest</button>
 </div>
 
 <!---->
@@ -62,8 +63,4 @@ var jokeDiv = document.getElementById('joke');
         console.log(err)
       })
   };
-  
-  
-  
-
 </script>
